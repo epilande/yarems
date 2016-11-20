@@ -1,0 +1,6 @@
+@import "styles/utils/colors.css";
+
+.base {
+  padding: 0;
+  overflow-y: scroll;
+}

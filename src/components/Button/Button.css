@@ -1,0 +1,16 @@
+@import "styles/utils/colors.css";
+
+.base {
+  padding: 0.8125rem 2rem;
+  border: 2px solid;
+  border-radius: 30px;
+  color: var(--success);
+  outline: 0;
+  transition: background 0.2s, color 0.25s;
+  cursor: pointer;
+}
+
+.base:hover {
+  color: var(--white);
+  background: var(--success);
+}

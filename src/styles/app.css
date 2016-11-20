@@ -1,0 +1,23 @@
+/* Vendors */
+@import "sanitize.css/sanitize.css";
+
+/* Variables */
+@import "styles/utils/colors.css";
+@import "styles/utils/fonts.css";
+
+:root {
+  font-size: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--dark-text);
+  font-family: var(--baseFont);
+  font-weight: 300;
+  letter-spacing: 0.1px;
+}

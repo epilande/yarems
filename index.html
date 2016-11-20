@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <style>
+      .z-loader-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(2);
+      }
+
+      .app-base {
+        padding-top: 0.5rem;
+      }
+
+      #root {
+        margin-top: 0.25rem;
+        height: calc(100vh - 0.75rem);
+        background: #fff;
+        border-radius: 5px;
+      }
+
+      .tray-triangle {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 0.75rem solid transparent;
+        border-right: 0.75rem solid transparent;
+        border-bottom: 0.75rem solid #fff;
+      }
+    </style>
+    <script>
+      (function() {
+        if (process.env.NODE_ENV !== 'development') {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './dist/styles.css';
+          document.write(link.outerHTML);
+        }
+      }());
+    </script>
+  </head>
+  <body>
+    <div class="app-base">
+      <div class=tray-triangle></div>
+      <div id="root">
+        <svg class="z-loader-logo" width="80" height="44" viewBox="0 0 80 44" xmlns="http://www.w3.org/2000/svg">
+          <title>Yarems</title>
+          <g fill="none" fill-rule="evenodd">
+            <path fill="#FEC33D" d="M.482.171L64.557.17 49.496 27.34z"/>
+            <path fill="#EF7024" d="M79.265 43.766l-64.075.002L30.25 16.597z"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <script>
+      (function() {
+        const script = document.createElement('script');
+        script.src = process.env.NODE_ENV === 'development' ? 'http://localhost:9000/dist/bundle.js' : './dist/bundle.js';
+        document.write(script.outerHTML);
+      }());
+    </script>
+  </body>
+</html>
