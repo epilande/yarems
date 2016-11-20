@@ -28,7 +28,9 @@ const mb = menubar({
   transparent: true,
 });
 
-mb.on('ready', () => {
+mb.on('ready', async () => {
+  await installExtensions();
+
   console.log('app is ready'); // eslint-disable-line
 
   mb.window.openDevTools();
