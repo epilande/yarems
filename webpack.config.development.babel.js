@@ -1,21 +1,27 @@
-import path from 'path';
-import webpack from 'webpack';
-import postcssImport from 'postcss-import';
-import cssnext from 'postcss-cssnext';
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.config.base');
 
-const config = {
+// PostCSS
+const stylelint = require('stylelint');
+const postcssImport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
+const postcssReporter = require('postcss-reporter');
+
+const config = merge(baseConfig, {
   devtool: 'eval',
+
   entry: [
     'webpack-hot-middleware/client?reload=true&path=http://localhost:9000/__webpack_hmr',
     './src/index',
   ],
+
+  output: {
+    publicPath: 'http://localhost:9000/dist/',
+  },
+
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-      },
       {
         test: /\.css$/,
         loaders: [
@@ -24,33 +30,20 @@ const config = {
           'postcss-loader',
         ],
       },
-      {
-        test: /\.png|\.svg$/,
-        loader: 'file-loader'
-      }
-    ]
-  },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: 'http://localhost:9000/dist/',
-    filename: 'bundle.js'
-  },
-  resolve: {
-    modules: [
-      path.resolve(__dirname, 'src'),
-      'node_modules',
     ],
-    extensions: ['.js', '.json'],
   },
+
   plugins: [
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: (webpackInstance) => [
+        postcss: webpackInstance => [
+          stylelint,
           postcssImport({
             addDependencyTo: webpackInstance,
             path: ['./src'],
           }),
           cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
+          postcssReporter({ clearMessages: true }),
         ],
         context: __dirname,
       },
@@ -63,7 +56,6 @@ const config = {
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
-  target: 'electron-renderer',
-};
+});
 
 module.exports = config;

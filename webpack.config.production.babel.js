@@ -1,47 +1,35 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import postcssImport from 'postcss-import';
-import cssnext from 'postcss-cssnext';
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const baseConfig = require('./webpack.config.base');
 
-const config = {
+// PostCSS
+const postcssImport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
+
+const config = merge(baseConfig, {
   entry: './src/index',
+
+  output: {
+    publicPath: './dist/',
+  },
+
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-      },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
-          loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+          loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
         }),
       },
-      {
-        test: /\.png|\.svg$/,
-        loader: 'file-loader'
-      }
-    ]
-  },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: './dist/',
-    filename: 'bundle.js'
-  },
-  resolve: {
-    modules: [
-      path.resolve(__dirname, 'src'),
-      'node_modules',
     ],
-    extensions: ['.js', '.json'],
   },
+
   plugins: [
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: (webpackInstance) => [
+        postcss: webpackInstance => [
           postcssImport({
             addDependencyTo: webpackInstance,
             path: ['./src'],
@@ -69,7 +57,6 @@ const config = {
     }),
     new ExtractTextPlugin({ filename: 'styles.css', allChunks: true }),
   ],
-  target: 'electron-renderer',
-};
+});
 
 module.exports = config;
