@@ -1,6 +1,8 @@
 # YAREMS
 **Yet Another React Electron Menubar Starter**
 
+![yarems](http://i.giphy.com/ckI6lN0ti8I6s.gif)
+
 ## Quick Start
 
 #### Clone this repo
