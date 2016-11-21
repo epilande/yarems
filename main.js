@@ -1,5 +1,8 @@
-import menubar from 'menubar';
 import { app, ipcMain } from 'electron';
+import menubar from 'menubar';
+import fixpath from 'fix-path';
+
+fixpath();
 
 const installExtensions = async () => {
   if (process.env.NODE_ENV === 'development') {
