@@ -1,8 +1,8 @@
 import { app, ipcMain } from 'electron';
 import menubar from 'menubar';
-import fixpath from 'fix-path';
 
-fixpath();
+require('fix-path')(); // resolve user $PATH env variable
+require('electron-debug')({ showDevTools: true });
 
 const installExtensions = async () => {
   if (process.env.NODE_ENV === 'development') {
@@ -36,8 +36,6 @@ mb.on('ready', async () => {
   await installExtensions();
 
   console.log('app is ready'); // eslint-disable-line
-
-  mb.window.openDevTools();
 });
 
 // Quit when all windows are closed.
