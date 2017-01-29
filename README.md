@@ -1,4 +1,6 @@
 # YAREMS
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/epilande/yarems.svg)](https://greenkeeper.io/)
 **Yet Another React Electron Menubar Starter**
 
 ![yarems](http://i.giphy.com/ckI6lN0ti8I6s.gif)
