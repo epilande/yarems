@@ -1,4 +1,4 @@
-@import "styles/utils/colors.css";
+@import "../../styles/utils/colors.css";
 
 .base {
   border-bottom: 0.0625rem solid var(--border);

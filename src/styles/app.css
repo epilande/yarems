@@ -2,8 +2,8 @@
 @import "sanitize.css/sanitize.css";
 
 /* Variables */
-@import "styles/utils/colors.css";
-@import "styles/utils/fonts.css";
+@import "./utils/colors.css";
+@import "./utils/fonts.css";
 
 :root {
   font-size: 14px;

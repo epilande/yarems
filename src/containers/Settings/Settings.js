@@ -1,16 +1,12 @@
 import { remote } from 'electron';
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './actions';
+import Button from '../../components/Button';
 import styles from './Settings.css';
 
 class Settings extends Component {
-  static propTypes = {
-    path: PropTypes.string,
-    setPath: PropTypes.func,
-  }
-
   constructor(props) {
     super(props);
     this.setPath = this.setPath.bind(this);
@@ -32,9 +28,7 @@ class Settings extends Component {
     return (
       <div className={styles.base}>
         <h1>Settings Page</h1>
-        <button onClick={this.setPath}>
-          {path || 'Set Path'}
-        </button>
+        <Button onClick={this.setPath}>{path || 'Set Path'}</Button>
         <Link to="/">Back</Link>
       </div>
     );

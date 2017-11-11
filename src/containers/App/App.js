@@ -1,13 +1,15 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import {Switch, Route} from 'react-router-dom';
+import Home from '../Home';
+import Settings from '../Settings';
 
-const App = ({ children }) => (
+const App = () => (
   <div>
-    {children}
+    <Switch>
+      <Route path="/settings" component={Settings} />
+      <Route path="/" component={Home} />
+    </Switch>
   </div>
 );
-
-App.propTypes = {
-  children: PropTypes.element,
-};
 
 export default App;

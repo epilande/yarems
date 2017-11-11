@@ -24,10 +24,33 @@ const config = merge(baseConfig, {
     rules: [
       {
         test: /\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-          'postcss-loader',
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: loader => [
+                stylelint,
+                postcssImport({
+                  root: loader.resourcePath,
+                }),
+                cssnext({browsers: ['last 2 versions', 'IE > 10']}),
+                postcssReporter({clearMessages: true}),
+              ],
+            },
+          },
         ],
       },
     ],
@@ -36,15 +59,6 @@ const config = merge(baseConfig, {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: webpackInstance => [
-          stylelint,
-          postcssImport({
-            addDependencyTo: webpackInstance,
-            path: ['./src'],
-          }),
-          cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
-          postcssReporter({ clearMessages: true }),
-        ],
         context: __dirname,
       },
       debug: true,
