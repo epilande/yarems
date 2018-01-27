@@ -3,7 +3,6 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 
 // PostCSS
-const stylelint = require('stylelint');
 const postcssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
@@ -42,7 +41,6 @@ const config = merge(baseConfig, {
             options: {
               ident: 'postcss',
               plugins: loader => [
-                stylelint,
                 postcssImport({
                   root: loader.resourcePath,
                 }),
