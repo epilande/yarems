@@ -1,23 +1,23 @@
+/* eslint-disable global-require, function-paren-newline, no-console */
 import { app, ipcMain } from 'electron';
 import menubar from 'menubar';
 
 require('fix-path')(); // resolve user $PATH env variable
-require('electron-debug')({ showDevTools: true });
+
+if (process.env.NODE_ENV === 'development') {
+  require('electron-debug')({ showDevTools: true });
+}
 
 const installExtensions = async () => {
   if (process.env.NODE_ENV === 'development') {
-    const installer = require('electron-devtools-installer'); // eslint-disable-line
+    const installer = require('electron-devtools-installer');
 
-    const extensions = [
-      'REACT_DEVELOPER_TOOLS',
-      'REDUX_DEVTOOLS',
-    ];
+    const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
     const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-    for (const name of extensions) { // eslint-disable-line
-      try {
-        await installer.default(installer[name], forceDownload);
-      } catch (e) {} // eslint-disable-line
-    }
+
+    return Promise.all(
+      extensions.map(name => installer.default(installer[name], forceDownload)),
+    ).catch(console.log);
   }
 };
 
@@ -35,7 +35,7 @@ const mb = menubar({
 mb.on('ready', async () => {
   await installExtensions();
 
-  console.log('app is ready'); // eslint-disable-line
+  console.log('app is ready');
 });
 
 // Quit when all windows are closed.
