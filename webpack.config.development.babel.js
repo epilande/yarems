@@ -2,11 +2,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 
-// PostCSS
-const postcssImport = require('postcss-import');
-const cssnext = require('postcss-cssnext');
-const postcssReporter = require('postcss-reporter');
-
 const config = merge(baseConfig, {
   devtool: 'eval',
 
@@ -17,41 +12,6 @@ const config = merge(baseConfig, {
 
   output: {
     publicPath: 'http://localhost:9000/dist/',
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: loader => [
-                postcssImport({
-                  root: loader.resourcePath,
-                }),
-                cssnext({browsers: ['last 2 versions', 'IE > 10']}),
-                postcssReporter({clearMessages: true}),
-              ],
-            },
-          },
-        ],
-      },
-    ],
   },
 
   plugins: [
