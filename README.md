@@ -24,8 +24,8 @@ $ npm install
 $ npm run dev
 ```
 
-#### Launch prod environment
+#### Package application
 
 ```bash
-$ npm run prod
+$ npm run build
 ```
