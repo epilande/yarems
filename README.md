@@ -1,5 +1,8 @@
 # YAREMS
-**Yet Another React Electron Menubar Starter**
+
+**Yet Another React Electron Menubar Starter** 
+
+[![Build Status](https://travis-ci.org/epilande/yarems.svg?branch=master)](https://travis-ci.org/epilande/yarems)
 
 ![yarems](http://i.giphy.com/ckI6lN0ti8I6s.gif)
 
@@ -24,8 +27,8 @@ $ npm install
 $ npm run dev
 ```
 
-#### Launch prod environment
+#### Package application
 
 ```bash
-$ npm run prod
+$ npm run build
 ```
