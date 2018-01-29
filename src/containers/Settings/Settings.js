@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 import Button from '../../components/Button';
-import styles from './Settings.css';
+import Wrapper from '../../components/Wrapper';
 
 class Settings extends Component {
   constructor(props) {
@@ -26,11 +26,11 @@ class Settings extends Component {
     const { path } = this.props;
 
     return (
-      <div className={styles.base}>
+      <Wrapper>
         <h1>Settings Page</h1>
         <Button onClick={this.setPath}>{path || 'Set Path'}</Button>
         <Link to="/">Back</Link>
-      </div>
+      </Wrapper>
     );
   }
 }
