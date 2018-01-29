@@ -34,16 +34,6 @@
         border-bottom: 0.75rem solid #fff;
       }
     </style>
-    <script>
-      (function() {
-        if (process.env.NODE_ENV !== 'development') {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = './dist/styles.css';
-          document.write(link.outerHTML);
-        }
-      }());
-    </script>
   </head>
   <body>
     <div class="app-base">

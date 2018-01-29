@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router-dom';
-
-import styles from './Home.css';
+import { Link } from 'react-router-dom';
+import Wrapper from '../../components/Wrapper';
 
 class Home extends Component {
-  static defaultProps = {
-  }
+  static defaultProps = {};
 
   render() {
     return (
-      <div className={styles.base}>
+      <Wrapper>
         <h1>Home Page</h1>
         <Link to="/settings">Settings</Link>
-      </div>
+      </Wrapper>
     );
   }
 }

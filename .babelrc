@@ -3,5 +3,10 @@
     "@babel/preset-env",
     "@babel/preset-stage-0",
     "@babel/preset-react"
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": ["babel-plugin-styled-components"]
+    }
+  }
 }
