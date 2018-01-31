@@ -6,7 +6,11 @@
   ],
   "env": {
     "development": {
-      "plugins": ["babel-plugin-styled-components"]
+      "plugins": [
+        "babel-plugin-styled-components",
+        "react-hot-loader/babel",
+        ["transform-class-properties", { "loose": true }]
+      ]
     }
   }
 }
