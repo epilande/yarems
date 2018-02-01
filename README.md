@@ -30,5 +30,5 @@ $ npm run dev
 #### Package application
 
 ```bash
-$ npm run build
+$ npm run package
 ```

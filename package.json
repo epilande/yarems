@@ -4,9 +4,11 @@
   "description": "Yet Another React Electron Menubar Starter",
   "main": "index.js",
   "scripts": {
+    "postinstall": "electron-rebuild",
     "start": "NODE_ENV=development electron .",
-    "dev": "concurrently -k 'babel-node server.js' 'npm start'",
-    "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js && electron-packager . Yarems --platform=darwin --arch=all --prune --out release --overwrite --icon ./app.icns"
+    "dev": "concurrently -k 'node -r babel-register server.js' 'npm start'",
+    "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js",
+    "package": "npm run build && NODE_ENV=production electron-packager . Yarems --platform=darwin --arch=all --prune --out release --overwrite --icon ./app.icns"
   },
   "author": "Emmanuel Pilande",
   "engine-strict": true,
