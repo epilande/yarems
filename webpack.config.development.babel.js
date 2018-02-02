@@ -8,7 +8,6 @@ const config = merge(baseConfig, {
   devtool: 'eval',
 
   entry: [
-    'react-hot-loader/patch',
     `webpack-hot-middleware/client?reload=true&path=http://localhost:${port}/__webpack_hmr`,
     './src/index',
   ],

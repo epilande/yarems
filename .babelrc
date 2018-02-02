@@ -1,16 +1,8 @@
 {
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-stage-0",
-    "@babel/preset-react"
-  ],
-  "env": {
-    "development": {
-      "plugins": [
-        "babel-plugin-styled-components",
-        "react-hot-loader/babel",
-        ["transform-class-properties", { "loose": true }]
-      ]
-    }
-  }
+  "presets": ["env", "stage-0", "react"],
+  "plugins": [
+    "babel-plugin-styled-components",
+    "react-hot-loader/babel",
+    ["transform-class-properties", { "loose": true }]
+  ]
 }
