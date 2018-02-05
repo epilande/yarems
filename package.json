@@ -4,7 +4,7 @@
   "description": "Yet Another React Electron Menubar Starter",
   "main": "main.js",
   "scripts": {
-    "postinstall": "install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "start": "NODE_ENV=development electron .",
     "dev": "concurrently -k 'node -r babel-register server.js' 'npm start'",
     "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js",
