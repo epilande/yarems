@@ -2,7 +2,7 @@
   "name": "yarems",
   "version": "1.0.0",
   "description": "Yet Another React Electron Menubar Starter",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "postinstall": "install-app-deps",
     "start": "NODE_ENV=development electron .",
