@@ -4,17 +4,34 @@
   "description": "Yet Another React Electron Menubar Starter",
   "main": "index.js",
   "scripts": {
-    "postinstall": "electron-rebuild",
+    "postinstall": "install-app-deps",
     "start": "NODE_ENV=development electron .",
     "dev": "concurrently -k 'node -r babel-register server.js' 'npm start'",
     "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js",
-    "package": "npm run build && NODE_ENV=production electron-packager . Yarems --platform=darwin --arch=all --prune --out release --overwrite --icon ./app.icns"
+    "package": "npm run build && electron-builder"
   },
   "author": "Emmanuel Pilande",
   "engine-strict": true,
   "engines": {
     "node": ">= 6.x",
     "npm": ">= 3.x"
+  },
+  "build": {
+    "appId": "org.epilande.yarems",
+    "productName": "Yarems",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/",
+      "index.html",
+      "main.js",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "resources/app.icns"
+    }
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -27,7 +44,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
-    "electron": "^1.8.2-beta.5",
     "fix-path": "^2.1.0",
     "menubar": "^5.1.0",
     "prop-types": "^15.6.0",
@@ -44,10 +60,10 @@
   "devDependencies": {
     "concurrently": "^3.1.0",
     "devtron": "^1.4.0",
+    "electron": "^1.8.2-beta.5",
+    "electron-builder": "^19.55.3",
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^2.2.3",
-    "electron-packager": "^10.1.2",
-    "electron-rebuild": "^1.7.3",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
