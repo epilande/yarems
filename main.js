@@ -1,6 +1,7 @@
 /* eslint-disable global-require, function-paren-newline, no-console */
-import { app, ipcMain } from 'electron';
-import menubar from 'menubar';
+const path = require('path');
+const { app, ipcMain } = require('electron');
+const menubar = require('menubar');
 
 require('fix-path')(); // resolve user $PATH env variable
 
@@ -24,6 +25,7 @@ const installExtensions = async () => {
 // menubar
 const mb = menubar({
   alwaysOnTop: process.env.NODE_ENV === 'development',
+  icon: path.join(app.getAppPath(), 'resources/IconTemplate.png'),
   minWidth: 500,
   maxWidth: 500,
   minHeight: 500,
