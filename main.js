@@ -1,6 +1,7 @@
 /* eslint-disable global-require, function-paren-newline, no-console */
-import { app, ipcMain } from 'electron';
-import menubar from 'menubar';
+const path = require('path');
+const { app, ipcMain } = require('electron');
+const menubar = require('menubar');
 
 require('fix-path')(); // resolve user $PATH env variable
 
