@@ -24,6 +24,7 @@ const installExtensions = async () => {
 // menubar
 const mb = menubar({
   alwaysOnTop: process.env.NODE_ENV === 'development',
+  icon: path.join(app.getAppPath(), 'resources/IconTemplate.png'),
   minWidth: 500,
   maxWidth: 500,
   minHeight: 500,
